@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hisham Sheikh | Video Editor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:100%;
+      height:100%;
+      background:
+      radial-gradient(circle at top left, rgba(0,212,255,0.08), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 25%);
+      z-index:-1;
+    }
+
+    a{
+      text-decoration:none;
+      color:#00d4ff;
+    }
+
+    header{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:50px 8%;
+      position:relative;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:center;
+      gap:60px;
+      width:100%;
+      max-width:1200px;
+    }
+
+    .hero-text h3{
+      color:#00d4ff;
+      letter-spacing:3px;
+      margin-bottom:10px;
+      font-weight:500;
+    }
+
+    .hero-text h1{
+      font-size:4rem;
+      line-height:1.1;
+      margin-bottom:20px;
+      background:linear-gradient(to right,#ffffff,#8c8c8c);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-text p{
+      color:#bdbdbd;
+      font-size:1.05rem;
+      line-height:1.8;
+      margin-bottom:30px;
+      max-width:550px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border-radius:50px;
+      font-weight:600;
+      transition:0.4s ease;
+      display:inline-block;
+    }
+
+    .primary{
+      background:#00d4ff;
+      color:black;
+      box-shadow:0 0 25px rgba(0,212,255,0.4);
+    }
+
+    .primary:hover{
+      transform:translateY(-4px);
+      box-shadow:0 0 40px rgba(0,212,255,0.7);
+    }
+
+    .secondary{
+      border:1px solid rgba(255,255,255,0.2);
+      color:white;
+      backdrop-filter:blur(10px);
+      background:rgba(255,255,255,0.05);
+    }
+
+    .secondary:hover{
+      background:rgba(255,255,255,0.1);
+      transform:translateY(-4px);
+    }
+
+    .hero-image{
+      display:flex;
+      justify-content:center;
+      position:relative;
+    }
+
+    .hero-image::before{
+      content:'';
+      position:absolute;
+      width:350px;
+      height:350px;
+      background:#00d4ff;
+      filter:blur(120px);
+      opacity:0.2;
+      z-index:0;
+    }
+
+    .hero-image img{
+      width:360px;
+      height:360px;
+      object-fit:cover;
+      border-radius:30px;
+      border:2px solid rgba(255,255,255,0.15);
+      position:relative;
+      z-index:1;
+      box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      font-size:2.5rem;
+      margin-bottom:50px;
+      text-align:center;
+      color:white;
+    }
+
+    .section-title span{
+      color:#00d4ff;
+    }
+
+    .about-box,
+    .contact-box{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:25px;
+      padding:40px;
+      backdrop-filter:blur(12px);
+      box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .about-box p,
+    .contact-box p{
+      color:#cfcfcf;
+      line-height:1.9;
+      font-size:1.05rem;
+    }
+
+    .skills-grid,
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill-card,
+    .project-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:30px;
+      border-radius:24px;
+      transition:0.4s ease;
+      backdrop-filter:blur(10px);
+    }
+
+    .skill-card:hover,
+    .project-card:hover{
+      transform:translateY(-8px);
+      border-color:#00d4ff;
+      box-shadow:0 10px 35px rgba(0,212,255,0.12);
+    }
+
+    .skill-card h3,
+    .project-card h3{
+      margin-bottom:12px;
+    }
+
+    .project-card p{
+      color:#c7c7c7;
+      line-height:1.7;
+      margin-bottom:18px;
+    }
+
+    .contact-box{
+      text-align:center;
+    }
+
+    .contact-box h3{
+      margin-bottom:15px;
+      font-size:2rem;
+    }
+
+    footer{
+      padding:25px;
+      text-align:center;
+      color:#7f7f7f;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    @media(max-width:900px){
+
+      .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .hero-text p{
+        margin:auto auto 30px;
+      }
+
+      .buttons{
+        justify-content:center;
+      }
+
+      .hero-text h1{
+        font-size:3rem;
+      }
+
+      .hero-image img{
+        width:280px;
+        height:280px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="hero">
+
+    <div class="hero-text">
+
+      <h3>VIDEO EDITOR</h3>
+
+      <h1>Hisham Sheikh</h1>
+
+      <p>
+        Cinematic video editor crafting dark aesthetic edits, viral reels,
+        YouTube content, gaming montages, and storytelling visuals with
+        modern transitions, sound design, and emotional impact.
+      </p>
+
+      <div class="buttons">
+        <a href="#contact" class="btn primary">Hire Me</a>
+        <a href="#projects" class="btn secondary">View Projects</a>
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+
+      <!-- Replace photo.jpg with your uploaded image name -->
+      <img src="photo.jpg" alt="Hisham Sheikh">
+
+    </div>
+
+  </div>
+
+</header>
+
+<section id="about">
+
+  <h2 class="section-title">About <span>Me</span></h2>
+
+  <div class="about-box">
+
+    <p>
+      I'm Hisham Sheikh, a passionate freelance video editor focused on creating
+      high-energy cinematic edits with modern internet aesthetics.
+      I specialize in YouTube edits, Instagram reels, gaming montages,
+      dramatic transitions, motion graphics, subtitles, and dark cinematic visuals.
+      My goal is to turn ordinary footage into engaging visual stories that capture attention instantly.
+    </p>
+
+  </div>
+
+</section>
+
+<section id="skills">
+
+  <h2 class="section-title">My <span>Skills</span></h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <h3>Premiere Pro</h3>
+      <p>Professional cinematic editing workflow.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>After Effects</h3>
+      <p>Smooth motion graphics and effects.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>Color Grading</h3>
+      <p>Dark cinematic and aesthetic visuals.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>Reels & Shorts</h3>
+      <p>Fast-paced viral editing style.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="projects">
+
+  <h2 class="section-title">Featured <span>Projects</span></h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h3>Cinematic Travel Edit</h3>
+      <p>
+        Emotional storytelling with smooth transitions, cinematic sound design,
+        and aesthetic color grading.
+      </p>
+      <a href="#">Watch Project →</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Gaming Montage</h3>
+      <p>
+        High-energy gameplay edits with meme cuts, effects, subtitles,
+        and engaging pacing.
+      </p>
+      <a href="#">Watch Project →</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Instagram Reel Campaign</h3>
+      <p>
+        Modern short-form content optimized for social media growth and retention.
+      </p>
+      <a href="#">Watch Project →</a>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contact">
+
+  <h2 class="section-title">Contact <span>Me</span></h2>
+
+  <div class="contact-box">
+
+    <h3>Let's Work Together</h3>
+
+    <p>Email: hishamsheikh2332@email.com</p>
+
+    <br>
+
+    <p>
+      Available for freelance video editing,
+      YouTube content editing, Instagram reels,
+      gaming montages, and cinematic edits.
+    </p>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <p>© 2026 Hisham Sheikh • Cinematic Video Editor</p>
+
+</footer>
+
+</body>
+  </html>
